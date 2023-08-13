@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum Parameter {
+    case id, target, level, number, off
+}
+
 protocol Feature {
     var name: String {get}
     var value: String?  { get }

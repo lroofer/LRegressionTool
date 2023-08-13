@@ -8,6 +8,10 @@
 import Foundation
 import Accelerate
 
+enum RunErrors: Error {
+    case IDValueMustExistAsAnInteger, TargetValueMustExistAsAnInteger
+}
+
 class MLModel {
     static func mult(_ A: [Double], _ B:[Double], firstD M: Int, secondD K: Int, thirdD N: Int) -> [Double] {
         var C = Array<Double>(repeating: 0, count: M * N)
@@ -38,7 +42,9 @@ class MLModel {
             if (tit != nil && getError(from: err) < tit!) {
                 break
             }
-            let grad = vDSP.multiply(2 / Double(N), MLModel.T(err, firstD: N, secondD: 1))
+            let xT = MLModel.T(x, firstD: N, secondD: m + 1)
+            let xTerr = MLModel.mult(xT, err, firstD: m + 1, secondD: N, thirdD: 1)
+            let grad = vDSP.multiply(2 / Double(N), xTerr)
             w = vDSP.subtract(w, vDSP.multiply(alpha, grad))
         }
     }
