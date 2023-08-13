@@ -11,6 +11,11 @@
 		0ABFB75F2A87D25D00906999 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB75E2A87D25D00906999 /* ContentView.swift */; };
 		0ABFB7612A87D25E00906999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABFB7602A87D25E00906999 /* Assets.xcassets */; };
 		0ABFB7642A87D25E00906999 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABFB7632A87D25E00906999 /* Preview Assets.xcassets */; };
+		0ABFB76F2A87D29700906999 /* MLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB76C2A87D29700906999 /* MLModel.swift */; };
+		0ABFB7702A87D29700906999 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB76D2A87D29700906999 /* Features.swift */; };
+		0ABFB7712A87D29700906999 /* MLObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB76E2A87D29700906999 /* MLObject.swift */; };
+		0ABFB7732A87E01E00906999 /* FeatureSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB7722A87E01E00906999 /* FeatureSelection.swift */; };
+		0ABFB7752A88D40B00906999 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB7742A88D40B00906999 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		0ABFB7602A87D25E00906999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0ABFB7632A87D25E00906999 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0ABFB7652A87D25E00906999 /* LRegressionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LRegressionTool.entitlements; sourceTree = "<group>"; };
+		0ABFB76C2A87D29700906999 /* MLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLModel.swift; sourceTree = "<group>"; };
+		0ABFB76D2A87D29700906999 /* Features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Features.swift; sourceTree = "<group>"; };
+		0ABFB76E2A87D29700906999 /* MLObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLObject.swift; sourceTree = "<group>"; };
+		0ABFB7722A87E01E00906999 /* FeatureSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSelection.swift; sourceTree = "<group>"; };
+		0ABFB7742A88D40B00906999 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +62,11 @@
 		0ABFB75B2A87D25D00906999 /* LRegressionTool */ = {
 			isa = PBXGroup;
 			children = (
+				0ABFB76B2A87D29700906999 /* MachineLearning */,
 				0ABFB75C2A87D25D00906999 /* LRegressionToolApp.swift */,
 				0ABFB75E2A87D25D00906999 /* ContentView.swift */,
+				0ABFB7742A88D40B00906999 /* Storage.swift */,
+				0ABFB7722A87E01E00906999 /* FeatureSelection.swift */,
 				0ABFB7602A87D25E00906999 /* Assets.xcassets */,
 				0ABFB7652A87D25E00906999 /* LRegressionTool.entitlements */,
 				0ABFB7622A87D25E00906999 /* Preview Content */,
@@ -67,6 +80,16 @@
 				0ABFB7632A87D25E00906999 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0ABFB76B2A87D29700906999 /* MachineLearning */ = {
+			isa = PBXGroup;
+			children = (
+				0ABFB76C2A87D29700906999 /* MLModel.swift */,
+				0ABFB76D2A87D29700906999 /* Features.swift */,
+				0ABFB76E2A87D29700906999 /* MLObject.swift */,
+			);
+			path = MachineLearning;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +162,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABFB7702A87D29700906999 /* Features.swift in Sources */,
+				0ABFB7752A88D40B00906999 /* Storage.swift in Sources */,
+				0ABFB7732A87E01E00906999 /* FeatureSelection.swift in Sources */,
+				0ABFB7712A87D29700906999 /* MLObject.swift in Sources */,
 				0ABFB75F2A87D25D00906999 /* ContentView.swift in Sources */,
+				0ABFB76F2A87D29700906999 /* MLModel.swift in Sources */,
 				0ABFB75D2A87D25D00906999 /* LRegressionToolApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
