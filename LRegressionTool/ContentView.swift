@@ -16,6 +16,8 @@ struct ContentView: View {
     @State var alpha = 0.45
     @State var s = 1000
     @State var tit = "nil"
+    @State var savePath = "~/Desktop/proj.csv"
+    @State var success = false
     var titOK: Bool {
         tit == "nil" || Double(tit) != nil
     }
@@ -37,6 +39,7 @@ struct ContentView: View {
         storage.statesFeatures = Array<String>(repeating: "Off", count: storage.allFeatures.count)
     }
     func run() {
+        success = false
         let tol: Double?
         if tit == "nil" {
             tol = nil
@@ -87,6 +90,7 @@ struct ContentView: View {
                 idColumn = i
             }
         }
+        storage.ids = []
         for i in 1..<storage.testData.count {
             if storage.testData[i].isEmpty {
                 continue
@@ -97,6 +101,7 @@ struct ContentView: View {
                 return
             }
             testDataObjects.append(MLObject(format: formatTest, current: vals, with: translator))
+            storage.ids?.append(testDataObjects.last!.id)
         }
         var trainData = Array<Array<Double>>()
         var testData = Array<Array<Double>>()
@@ -107,8 +112,8 @@ struct ContentView: View {
             testData.append(obj.getData())
         }
         ML.fit(trainData: trainData.flatMap{$0}, countData: trainData.count, countArray: targets)
-        let prediction = ML.predict(testData: testData.flatMap{$0}, countData: testData.count)
-        print(prediction)
+        storage.predictions = ML.predict(testData: testData.flatMap{$0}, countData: testData.count)
+        success = true
     }
     var body: some View {
         ZStack (alignment: .topLeading) {
@@ -183,6 +188,9 @@ struct ContentView: View {
                     if storage.runError != nil {
                         Text("Runtime error: \(storage.runError! == .IDValueMustExistAsAnInteger ? "ID" : "Target")")
                             .foregroundColor(.red)
+                    }
+                    if (success) {
+                        SaveDirectory(storage: storage)
                     }
                 }
             }

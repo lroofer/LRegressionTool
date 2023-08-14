@@ -14,6 +14,9 @@ class Storage: ObservableObject {
     @Published var allFeatures: [String] = []
     @Published var statesFeatures: [String] = []
     @Published var runError: RunErrors? = nil
+    @Published var saveDirectory: URL? = nil
+    @Published var predictions: [Double]? = nil
+    @Published var ids: [Int]? = nil
     var trainData: [String] = []
     var testData: [String] = []
 }
