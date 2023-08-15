@@ -113,6 +113,7 @@ struct ContentView: View {
         }
         ML.fit(trainData: trainData.flatMap{$0}, countData: trainData.count, countArray: targets)
         storage.predictions = ML.predict(testData: testData.flatMap{$0}, countData: testData.count)
+        let copy = LevelFeauture.allValues
         success = true
     }
     var body: some View {
