@@ -17,6 +17,9 @@
 		0ABFB7732A87E01E00906999 /* FeatureSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB7722A87E01E00906999 /* FeatureSelection.swift */; };
 		0ABFB7752A88D40B00906999 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFB7742A88D40B00906999 /* Storage.swift */; };
 		0AF662A72A8A663300DA948B /* SaveDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF662A62A8A663300DA948B /* SaveDirectory.swift */; };
+		0AF662A92A8B958600DA948B /* SaveMarkUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF662A82A8B958600DA948B /* SaveMarkUp.swift */; };
+		0AF662AE2A8B99DC00DA948B /* markup.lrt in Resources */ = {isa = PBXBuildFile; fileRef = 0AF662AC2A8B99DB00DA948B /* markup.lrt */; };
+		0AF662AF2A8B99DC00DA948B /* proj.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0AF662AD2A8B99DB00DA948B /* proj.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		0ABFB7722A87E01E00906999 /* FeatureSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureSelection.swift; sourceTree = "<group>"; };
 		0ABFB7742A88D40B00906999 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0AF662A62A8A663300DA948B /* SaveDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDirectory.swift; sourceTree = "<group>"; };
+		0AF662A82A8B958600DA948B /* SaveMarkUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMarkUp.swift; sourceTree = "<group>"; };
+		0AF662AC2A8B99DB00DA948B /* markup.lrt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markup.lrt; sourceTree = "<group>"; };
+		0AF662AD2A8B99DB00DA948B /* proj.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = proj.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +54,7 @@
 		0ABFB7502A87D25D00906999 = {
 			isa = PBXGroup;
 			children = (
-				0AF662A62A8A663300DA948B /* SaveDirectory.swift */,
+				0AF662AB2A8B99DB00DA948B /* testFiles */,
 				0ABFB75B2A87D25D00906999 /* LRegressionTool */,
 				0ABFB75A2A87D25D00906999 /* Products */,
 			);
@@ -69,7 +75,7 @@
 				0ABFB75C2A87D25D00906999 /* LRegressionToolApp.swift */,
 				0ABFB75E2A87D25D00906999 /* ContentView.swift */,
 				0ABFB7742A88D40B00906999 /* Storage.swift */,
-				0ABFB7722A87E01E00906999 /* FeatureSelection.swift */,
+				0AF662AA2A8B959500DA948B /* ViewObjects */,
 				0ABFB7602A87D25E00906999 /* Assets.xcassets */,
 				0ABFB7652A87D25E00906999 /* LRegressionTool.entitlements */,
 				0ABFB7622A87D25E00906999 /* Preview Content */,
@@ -93,6 +99,25 @@
 				0ABFB76E2A87D29700906999 /* MLObject.swift */,
 			);
 			path = MachineLearning;
+			sourceTree = "<group>";
+		};
+		0AF662AA2A8B959500DA948B /* ViewObjects */ = {
+			isa = PBXGroup;
+			children = (
+				0AF662A62A8A663300DA948B /* SaveDirectory.swift */,
+				0ABFB7722A87E01E00906999 /* FeatureSelection.swift */,
+				0AF662A82A8B958600DA948B /* SaveMarkUp.swift */,
+			);
+			path = ViewObjects;
+			sourceTree = "<group>";
+		};
+		0AF662AB2A8B99DB00DA948B /* testFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0AF662AC2A8B99DB00DA948B /* markup.lrt */,
+				0AF662AD2A8B99DB00DA948B /* proj.csv */,
+			);
+			path = testFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +178,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF662AE2A8B99DC00DA948B /* markup.lrt in Resources */,
+				0AF662AF2A8B99DC00DA948B /* proj.csv in Resources */,
 				0ABFB7642A87D25E00906999 /* Preview Assets.xcassets in Resources */,
 				0ABFB7612A87D25E00906999 /* Assets.xcassets in Resources */,
 			);
@@ -169,6 +196,7 @@
 				0ABFB7752A88D40B00906999 /* Storage.swift in Sources */,
 				0AF662A72A8A663300DA948B /* SaveDirectory.swift in Sources */,
 				0ABFB7732A87E01E00906999 /* FeatureSelection.swift in Sources */,
+				0AF662A92A8B958600DA948B /* SaveMarkUp.swift in Sources */,
 				0ABFB7712A87D29700906999 /* MLObject.swift in Sources */,
 				0ABFB75F2A87D25D00906999 /* ContentView.swift in Sources */,
 				0ABFB76F2A87D29700906999 /* MLModel.swift in Sources */,

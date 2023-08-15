@@ -174,6 +174,7 @@ struct ContentView: View {
                 if (storage.target != nil && storage.id != nil) {
                     Text("ID: \(storage.allFeatures[storage.id!])")
                     Text("Target: \(storage.allFeatures[storage.target!])")
+                    SaveMarkUp(storage: storage)
                     HStack {
                         TextField("Alpha", value: $alpha, format: .number)
                         TextField("Iterations", value: $s, format: .number)

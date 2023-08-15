@@ -66,7 +66,7 @@ struct NumberValueFeature: Feature {
         self.name = name
         if let returnValue = Double(value) {
             self.value = value
-            if NumberValueFeature.allValues[name] != nil {
+            if NumberValueFeature.allValues[name] == nil {
                 NumberValueFeature.allValues[name] = (0, 0)
             }
             NumberValueFeature.allValues[name]!.0 += returnValue

@@ -13,6 +13,61 @@ struct FeatureSelection: View {
     @Environment(\.dismiss) var dismiss
     let states = ["Off", "Level", "Number", "ID", "Target"]
     var statesFeatures: [String]
+    func load() {
+        errorMessage = nil
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        if panel.runModal() == .OK {
+            guard let url = panel.url else {
+                errorMessage = "File is not accessible"
+                return
+            }
+            if url.lastPathComponent.components(separatedBy: ".").last != "lrt" {
+                errorMessage = "You should select .lrt file, \(panel.url!.lastPathComponent) is not active extension"
+                return
+            }
+            guard let data = try? String(contentsOf: url).components(separatedBy: "\n") else {
+                errorMessage = "Can't read markup from the file! Choose another .lrt file!"
+                return
+            }
+            var markup = [String]()
+            var skipped = 0
+            for i in 0..<data.count {
+                if data[i].isEmpty {
+                    skipped += 1
+                    continue
+                }
+                let doubleValue = data[i].components(separatedBy: ",")
+                if doubleValue.count != 2 {
+                    errorMessage = "\(url.lastPathComponent) was damaged"
+                    return
+                }
+                if storage.allFeatures[i - skipped] != doubleValue[0] {
+                    errorMessage = "\(doubleValue[0]) doesn't correspond the feature's format of train file"
+                    return
+                }
+                var isOK = false
+                for j in states {
+                    if j != doubleValue[1] {
+                        continue
+                    }
+                    markup.append(doubleValue[1])
+                    isOK = true
+                    break
+                }
+                if (!isOK) {
+                    errorMessage = "\(doubleValue[1]) is not a state"
+                    return
+                }
+            }
+            if storage.allFeatures.count != markup.count {
+                errorMessage = "Data was lost, \(url.lastPathComponent) was damaged!"
+                return
+            }
+            storage.statesFeatures = markup
+        }
+    }
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
@@ -62,6 +117,9 @@ struct FeatureSelection: View {
                 .buttonStyle(.borderedProminent)
                 Button("Cancel") {
                     dismiss()
+                }
+                Button("Load markup") {
+                    load()
                 }
                 if errorMessage != nil {
                     Label(errorMessage!, systemImage: "xmark.seal")
