@@ -34,17 +34,15 @@ class MLModel {
     var alpha: Double
     var s: Int
     var m: Int
+    var M: Int {
+        m + 1
+    }
     var tit: Double?
     func fit(trainData x: [Double], countData N: Int, countArray y: [Double]) {
         for _ in 1...s {
-            let f = MLModel.mult(x, w, firstD: N, secondD: m + 1, thirdD: 1)
+            let f = MLModel.mult(x, w, firstD: N, secondD: M, thirdD: 1)
             let err = vDSP.subtract(f, y)
-            if (tit != nil && getError(from: err) < tit!) {
-                break
-            }
-            let xT = MLModel.T(x, firstD: N, secondD: m + 1)
-            let xTerr = MLModel.mult(xT, err, firstD: m + 1, secondD: N, thirdD: 1)
-            let grad = vDSP.multiply(2 / Double(N), xTerr)
+            let grad = vDSP.multiply(2 / Double(N), MLModel.mult(MLModel.T(x, firstD: N, secondD: M), err, firstD: M, secondD: N, thirdD: 1))
             w = vDSP.subtract(w, vDSP.multiply(alpha, grad))
         }
     }
@@ -58,7 +56,7 @@ class MLModel {
         self.w = [1]
         self.tit = tit
         for _ in 0..<m {
-            self.w.append(Double.random(in: -20...20))
+            self.w.append(Double.random(in: 0...20))
         }
     }
 }

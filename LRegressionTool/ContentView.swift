@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var showFeatures = false
     @State var errorMessage: String? = "Choose files first"
     @StateObject var storage = Storage()
-    @State var alpha = 0.45
+    @State var learningRate = 0.00001
     @State var s = 1000
     @State var tit = "nil"
     @State var savePath = "~/Desktop/proj.csv"
@@ -46,7 +46,7 @@ struct ContentView: View {
         } else {
             tol = Double(tit)
         }
-        let ML = MLModel(alpha: alpha, s: s, m: storage.selected!, tit: tol)
+        let ML = MLModel(alpha: learningRate, s: s, m: storage.selected!, tit: tol)
         var translator = [String: Parameter]()
         for i in 0..<storage.allFeatures.count {
             let value: Parameter
@@ -113,7 +113,6 @@ struct ContentView: View {
         }
         ML.fit(trainData: trainData.flatMap{$0}, countData: trainData.count, countArray: targets)
         storage.predictions = ML.predict(testData: testData.flatMap{$0}, countData: testData.count)
-        let copy = LevelFeauture.allValues
         success = true
     }
     var body: some View {
@@ -176,7 +175,7 @@ struct ContentView: View {
                     Text("Target: \(storage.allFeatures[storage.target!])")
                     SaveMarkUp(storage: storage)
                     HStack {
-                        TextField("Alpha", value: $alpha, format: .number)
+                        TextField("Alpha", value: $learningRate, format: .number)
                         TextField("Iterations", value: $s, format: .number)
                         TextField("Tolerance", text: $tit)
                     }
